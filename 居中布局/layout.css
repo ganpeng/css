@@ -1,0 +1,186 @@
+/*
+*   父容器和子容器宽高不固定的情况下的水平居中的布局解决方案
+*/
+
+/* 方案一 display:inline-block + text-align:center; 支持IE8+ 以及标准浏览器 */
+.r1-hori-center-p {
+	text-align:center;  /* text-align对inline元素和inline-block元素是起作用的 */
+	height:200px;
+	background-color:red;
+}
+.r1-hori-center-c {
+	display:inline-block;
+	width:200px;
+	height:200px;
+	background-color:blue;
+	text-align:left;  /* 为了恢复子元素中的文本对齐方式 */
+}
+
+/* 方案二  display:table + margin:0 auto 支持IE8+ 以及标准浏览器 */
+.r2-hori-center-p {
+	width:100%;
+	height:200px;
+	background-color:yellow;
+}
+.r2-hori-center-c {
+	display:table;   /* 只需要设置子元素的样式 display:table的元素有个特点，它是块元素，但是它的宽度是跟着内容走的 */
+	width:200px;
+	height:200px;
+	margin:0 auto;
+	background-color:pink;
+}
+
+/* 方案三 position:absolute; + transform: translate; */
+
+.r3-hori-center-p {
+	position:relative;
+	height:200px;
+	background-color:orange;
+}
+
+.r3-hori-center-c {
+	position:absolute;
+	top:0;
+	left:50%;
+	width:200px;
+	height:200px;
+	background-color:gray;
+	-webkit-transform:translateX(-50%);
+	-moz-transform:translateX(-50%);
+	transform:translateX(-50%);
+}
+
+/* 方案四 display:flex + justify-content:center; */
+
+.r4-hori-center-p {
+	display:flex;
+	justify-content:center;
+	height:200pxs;
+	background-color:#999;
+}
+.r4-hori-center-c {
+	width:200px;
+	height:200px;
+	background-color:#333;
+}
+
+
+/*
+*   父容器和子容器宽高不固定的情况下的垂直居中的布局解决方案
+*  
+*/
+
+/* 方案一 display:table-cell + vertical-align:middle 支持IE8+ 以及标准浏览器 */
+.r1-vert-center-p {
+	display:table-cell;
+	height:400px;
+	vertical-align:middle;
+	background-color:green;
+}
+.r1-vert-center-c {
+	width:200px;
+	height:200px;
+	background-color:brown;
+}
+
+/* 方案二  position:absolute; + transform:translate 支持IE8+ 以及标准浏览器*/
+.r2-vert-center-p {
+	position:relative;
+	width:200px;
+	height:400px;
+	background-color:yellow;
+}
+.r2-vert-center-c {
+	position:absolute;
+	top:50%;
+	width:200px;
+	height:200px;
+	background-color:#333;
+	-webkit-transform:translateY(-50%);
+	-moz-transform:translateY(-50%);
+	transform:translateY(-50%);
+}
+
+/* 方案三 display:flex + align-item 支持标准浏览器 */
+.r3-vert-center-p {
+	display:flex;
+	align-items:center;
+	width:200px;
+	height:400px;
+	background-color:pink;
+}
+.r3-vert-center-c {
+	width:200px;
+	height:200px;
+	background-color:#777;
+}
+
+/*
+*	水平垂直都居中的布局解决方案
+*/
+/* 方案一  display:inline-block + text-align:center + display:table-cell + vertical-align:middle */
+.r1-center-p {
+	display:table-cell;
+	width:400px;
+	height:400px;
+	background-color:blue;
+	text-align:center;
+	vertical-align:middle;
+}
+.r1-center-c {
+	display:inline-block;
+	width:200px;
+	height:200px;
+	background-color:#999;
+	text-align:left;
+}
+
+/* 方案二   display:table + margin:0 auto + display:table-cell + vertical-align:middle */
+.r2-center-p {
+	display:table-cell;
+	width:400px;
+	height:400px;
+	background-color:orange;
+	vertical-align:middle;
+}
+.r2-center-c {
+	display:table;
+	margin:0 auto;
+	width:200px;
+	height:200px;
+	background-color:red;
+}
+
+/* 方案三 display:flex + justify-content:center + align-items:center */
+.r3-center-p {
+	display:flex;
+	width:400px;
+	height:400px;
+	background-color:#999;
+	justify-content:center;
+	align-items:center;
+}
+.r3-center-c {
+	width:200px;
+	height:200px;
+	background-color:green;
+}
+
+/* 方案四 position:absolute + transform:translate */
+.r4-center-p {
+	position:relative;
+	width:400px;
+	height:400px;
+	background-color:orange;
+}
+.r4-center-c {
+	position:absolute;
+	top:50%;
+	left:50%;
+	-webkit-transform:translate(-50%, -50%);
+	-moz-transform:translate(-50%, -50%);
+	transform:translate(-50%, -50%);
+	width:200px;
+	height:200px;
+	background-color:blue;
+}

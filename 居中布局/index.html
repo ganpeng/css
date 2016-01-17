@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="layout.css">
+	<title>布局解决方案</title>
+	<style>
+	* {margin:0;padding:0;}
+	.seperator {
+		width:100%;
+		height:40px;
+		background-color:#dfdfdf;
+	}
+	</style>
+</head>
+<body>
+	<!-- 水平居中的布局解决方案	 -->
+
+	<!-- 方案一 display:inline-block + text-align:center; -->
+	<div class="r1-hori-center-p">
+		<div class="r1-hori-center-c">
+			<p>水平居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案二 display:table + margin:0 auto -->
+	<div class="r2-hori-center-p">
+		<div class="r2-hori-center-c">
+			<p>水平居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案三 position:absolute + transform:translate -->
+	<div class="r3-hori-center-p">
+		<div class="r3-hori-center-c">
+			<p>水平居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案四 display:flex + justify-content:center; -->
+	<div class="r4-hori-center-p">
+		<div class="r4-hori-center-c">
+			<p>水平居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+
+
+	<!-- 垂直居中的解决方案 -->
+	<!-- 方案一  display:table-cell + vertical-align:middle  -->
+	<div class="r1-vert-center-p">
+		<div class="r1-vert-center-c">
+			<p>垂直居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案二  position:absolute + transform:translate -->
+	<div class="r2-vert-center-p">
+		<div class="r2-vert-center-c">
+			<p>垂直居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案三   display:flex + align-items -->
+	<div class="r3-vert-center-p">
+		<div class="r3-vert-center-c">
+			<p>垂直居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 水平垂直都居中的布局解决方案 -->
+	<!-- 方案一 display:inline-block + text-align:center + display:table-cell + vertical-align:middle  -->
+	<div class="r1-center-p">
+		<div class="r1-center-c">
+			<p>水平和垂直都居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案二 display:table + margin:0 auto + display:table-cell + vertical-align:middle -->
+	<div class="r2-center-p">
+		<div class="r2-center-c">
+			<p>水平垂直都居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案三 display:flex + justify-content:center + align-items:center  -->
+	<div class="r3-center-p">
+		<div class="r3-center-c">
+			<p>水平垂直都居中</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案四 position:absolute + transform: translate  -->
+	<div class="r4-center-p">
+		<div class="r4-center-c">
+			<p>水平垂直都居中</p>
+		</div>
+	</div>
+</body>
+</html>
