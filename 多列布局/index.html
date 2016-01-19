@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="index.css">
+	<title>多列布局的解决方案</title>
+	<style>
+	* { margin:0; padding:0;}
+	.seperator {width:100%;height:20px;background-color:#dfdfdf;}
+	</style>
+</head>
+<body>
+	<!-- 定宽 + 自适应 的布局	 -->
+	<!-- 方案一  float + margin  -->
+	<div class="r1-fm-p">
+		<div class="r1-fm-left">
+			<p>左边</p>
+		</div>
+		<div class="r1-fm-right">
+			<p>右边</p>
+			<p>右边</p>
+		</div>
+	</div>
+
+	<div class="seperator"></div>
+	<!-- 方案二 方案一的补充版本，解决了一些兼容性问题 -->
+	<div class="r2-fm-p">
+		<div class="r2-fm-left">
+			<p>左边</p>
+		</div>
+		<div class="r2-fm-right-wrapper">
+			<div class="r2-fm-right">
+				<p>右边</p>
+				<p>右边</p>
+			</div>
+		</div>
+	</div>		
+</body>
+</html>
