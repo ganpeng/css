@@ -89,3 +89,91 @@
 	background-color:#009d96;
 	height:200px;
 }
+
+/**
+ * 方案四 display：table + display：table-cell
+ */
+ .r4-fm-p {
+ 	width:100%;
+ 	height:200px;
+ 	display:table;
+ 	background-color:green;
+ }
+ .r4-fm-left, .r4-fm-right {
+ 	display:table-cell;
+ 	height:200px;
+ } 
+ .r4-fm-left {
+ 	width:400px;
+ 	background-color:#ea544a;
+ }
+ .r4-fm-right-wrapper {
+ 	height:200px;
+ }
+ .r4-fm-right {
+ 	height:200px;
+ 	background-color:orange;
+ 	padding-left:60px;
+ 	background-clip:content-box;   /*   display table-cell 属性不支持margin，所以用padding，设置background-clip：conten-box，可以让背景色只覆盖内容部分 */
+ 	-webkit-background-clip:content-box;
+ }
+
+ /**
+  * 方案五  display:flex;
+  */
+ .r5-fm-p {
+ 	display:flex;
+ 	width:100%;
+ 	height:200px;
+ 	background-color:#999;
+ }
+ .r5-fm-left {
+ 	width:400px;
+ 	margin-right:60px;
+ 	background-color:#e34528;
+ }
+ .r5-fm-right {
+ 	-webkit-flex:1;
+ 	flex:1;
+ 	background-color:red;
+ }
+
+
+/**
+ *  等分布局的实现方式
+ */
+/*  方案一   float  */
+.r6-fm-p {
+	width:100%;
+	height:200px;
+	background-color:blue;
+	margin-left:-20px;
+	clear:both;
+}
+.r6-fm-p .column {
+	float:left;
+	width:25%;
+	height:200px;
+	padding-left:20px;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-background-clip:content-box;
+	background-clip:content-box;
+	background-color:red;
+}
+/*	方案二  display：flex  */
+.r7-fm-p {
+	display:flex;
+	display:-webkit-flex;
+	width:100%;
+	height:200px;
+	background-color:black;
+}
+.r7-column {
+	flex:1;
+	-webkit-flex:1;
+	background-color:orange;
+}
+.r7-column + .r7-column {   /* 兄弟节点选择器  */
+	margin-left:20px;
+}
