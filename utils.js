@@ -63,28 +63,13 @@
 	 * @param  {[Number]} len [需要截取的字符串的长度]
 	 * @return {[String]}     [返回截取之后的字符串]
 	 */
-	Utilis.prototype.cutStr = function(str, len) {
-	    //length属性读出来的汉字长度为1
-	    if(str.length*2 <= len) {
-	        return str;
-	    }
-	    var strlen = 0;
-	    var s = "";
-	    for(var i = 0;i < str.length; i++) {
-	        s = s + str.charAt(i);
-	        if (str.charCodeAt(i) > 128) {
-	            strlen = strlen + 2;
-	            if(strlen >= len){
-	                return s.substring(0,s.length-1) + "...";
-	            }
-	        } else {
-	            strlen = strlen + 1;
-	            if(strlen >= len){
-	                return s.substring(0,s.length-2) + "...";
-	            }
-	        }
-	    }
-	    return s;
+	Utilis.prototype.cutStr = function(str, number) {
+		var length = str.length;
+		var tmp = str.substr(0, number);
+		if (str.length > number) {
+		tmp += "…";
+		}
+		return tmp;
 	}
 
 	/**
@@ -93,32 +78,32 @@
 	 * @param  {[String]} s2 [替换字符串]
 	 * @return {[String]}    [替换之后的字符串]
 	 */
-	Utilis.prototype.replaceAll = function(s1, s2) {
-		return String.prototype.replace(new RegExp(s1, 'gm'), s2);
+	Utilis.prototype.replaceAll = function(str,s1, s2) {
+		return str.replace(new RegExp(s1, 'gm'), s2);
 	}
 	/**
 	 * [trim 清除空格]
 	 * @return {[String]} [清除空格之后得到的字符串]
 	 */
-	Utilis.prototype.trim = function() {
+	Utilis.prototype.trim = function(str) {
 		var reExtraSpace = /^\s*(.*?)\s+$/;
-		return String.prototype.replace(reExtraSpace, "$1");
+		return str.replace(reExtraSpace, '$1');
 	}
 	/**
 	 * [ltrim 清除左边空格]
 	 * @return {[String]} [清除左边空格后得到的字符串]
 	 */
-	Utilis.prototype.ltrim = function() {
+	Utilis.prototype.ltrim = function(str) {
 		var reExtraSpace = /^(\s*| *)/;
-		return String.prototype.replace(reExtraSpace, "");
+		return str.replace(reExtraSpace, "");
 	}
 	/**
 	 * [rtrim 清除右边空格]
 	 * @return {[String]} [清除右边空格得到的字符串]
 	 */
-	Utilis.prototype.rtrim = function() {
+	Utilis.prototype.rtrim = function(str) {
 		var reExtraSpace = /(\s*| *)$/;
-		return String.prototype.replace(reExtraSpace, "");
+		return str.replace(reExtraSpace, "");
 	}
 	/**
 	 * [startWith 判断是否以某个字符串开头]
