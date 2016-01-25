@@ -47,6 +47,94 @@
 		}
 		return num;
 	}
+	/**
+	 * [cutStr 截取指定长度的字符串]
+	 * @param  {[String]} str [需要截取的字符串]
+	 * @param  {[Number]} len [需要截取的字符串的长度]
+	 * @return {[String]}     [返回截取之后的字符串]
+	 */
+	Utilis.prototype.cutStr = function(str, len) {
+		var temp,
+			icount = 0,
+			patrn = /[^\x00-\xff]/,  //  /[^\x00-\xff]/   ASCII编码不再0-255之间的字符  
+			strre = '',
+			i = 0,
+			strLen = str.length;
 
+		for (; i < strLen; i++) {
+			if (icount < len - 1) {
+				temp = str.substr(i, 1);
+				if (patrn.exec(temp) == null) {
+					icount = icount + 1;
+				} else {
+					icount = icount + 2;
+				}
+				strre += temp;
+			} else {
+				break;
+			}
+		}
+		return strre + '...';
+	}	
+	/**
+	 * [replaceAll 替换全部匹配到的字符串]
+	 * @param  {[String]} s1 [被替换的字符串]
+	 * @param  {[String]} s2 [替换字符串]
+	 * @return {[String]}    [替换之后的字符串]
+	 */
+	Utilis.prototype.replaceAll = function(s1, s2) {
+		return String.prototype.replace(new RegExp(s1, 'gm'), s2);
+	}
+	/**
+	 * [trim 清除空格]
+	 * @return {[String]} [清除空格之后得到的字符串]
+	 */
+	Utilis.prototype.trim = function() {
+		var reExtraSpace = /^\s*(.*?)\s+$/;
+		return String.prototype.replace(reExtraSpace, "$1");
+	}
+	/**
+	 * [ltrim 清除左边空格]
+	 * @return {[String]} [清除左边空格后得到的字符串]
+	 */
+	Utilis.prototype.ltrim = function() {
+		var reExtraSpace = /^(\s*| *)/;
+		return String.prototype.replace(reExtraSpace, "");
+	}
+	/**
+	 * [rtrim 清除右边空格]
+	 * @return {[String]} [清除右边空格得到的字符串]
+	 */
+	Utilis.prototype.rtrim = function() {
+		var reExtraSpace = /(\s*| *)$/;
+		return String.prototype.replace(reExtraSpace, "");
+	}
+	/**
+	 * [startWith 判断是否以某个字符串开头]
+	 * @param  {[String} str [要判断的字符串]
+	 * @param  {[String]} s   [要判断的子字符串]
+	 * @return {[Bollean]}  [是以该字符串开头则返回True,否则返回False]
+	 */
+	Utilis.prototype.startWith = function(str, s) {
+		return str.indexOf(s) === 0;
+	}
+	/**
+	 * [endWith 判断是否以某个字符串开头]
+	 * @param  {[String} str [要判断的字符串]
+	 * @param  {[String]} s   [要判断的子字符串]
+	 * @return {[Bollean]}  [是以该字符串结尾则返回True,否则返回False]
+	 */
+	Utilis.prototype.endWith = function(str, s) {
+		var d = str.length - s.length;
+		return (d >= 0 && str.lastIndexOf(s) === d)
+	}
+	/**
+	 * [htmlEncode 转移html标签]
+	 * @param  {[String]} text [需要转移的html字符串]
+	 * @return {[String]}      [转换完成之后的字符串]
+	 */
+	Utilis.prototype.htmlEncode = function(text) {
+		return text.replace(/&/g ,'&').replace(/\"/g, '"').replace(/\</g, '<').replace(/\>/g, '>');
+	}
 	return window.Utilis;
 })();
