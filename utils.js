@@ -1,8 +1,18 @@
 ;!(function() {
 	var Utilis = function() {};
+	/**
+	 * [setLs 本地存储]
+	 * @param {[String]} key  [存储的key]
+	 * @param {[String]} json [存储的value]
+	 */
 	Utilis.prototype.setLs = function(key ,json) {
 		window.localStorage.setItem(key, JSON.stringify(json));
 	};
+	/**
+	 * [getLs 获取本地存储]
+	 * @param  {[String]} key [需要获取的key]
+	 * @return {[String]}     [返回key的值]
+	 */
 	Utilis.prototype.getLs = function(key) {
 		var str = window.localStorage.getItem(key);
 		if (str !== '' && str !== null) {
@@ -33,7 +43,7 @@
 			return date.pattern("M月d日")
 		else
 			return date.pattern("yyyy年M月d日");
-	},
+	};
 	/**
 	 * [showNumbers 判断一个数值，如果超过10000，则显示num + '万']
 	 * @param  {[Number]} num [数值]
@@ -54,28 +64,29 @@
 	 * @return {[String]}     [返回截取之后的字符串]
 	 */
 	Utilis.prototype.cutStr = function(str, len) {
-		var temp,
-			icount = 0,
-			patrn = /[^\x00-\xff]/,  //  /[^\x00-\xff]/   ASCII编码不再0-255之间的字符  
-			strre = '',
-			i = 0,
-			strLen = str.length;
+	    //length属性读出来的汉字长度为1
+	    if(str.length*2 <= len) {
+	        return str;
+	    }
+	    var strlen = 0;
+	    var s = "";
+	    for(var i = 0;i < str.length; i++) {
+	        s = s + str.charAt(i);
+	        if (str.charCodeAt(i) > 128) {
+	            strlen = strlen + 2;
+	            if(strlen >= len){
+	                return s.substring(0,s.length-1) + "...";
+	            }
+	        } else {
+	            strlen = strlen + 1;
+	            if(strlen >= len){
+	                return s.substring(0,s.length-2) + "...";
+	            }
+	        }
+	    }
+	    return s;
+	}
 
-		for (; i < strLen; i++) {
-			if (icount < len - 1) {
-				temp = str.substr(i, 1);
-				if (patrn.exec(temp) == null) {
-					icount = icount + 1;
-				} else {
-					icount = icount + 2;
-				}
-				strre += temp;
-			} else {
-				break;
-			}
-		}
-		return strre + '...';
-	}	
 	/**
 	 * [replaceAll 替换全部匹配到的字符串]
 	 * @param  {[String]} s1 [被替换的字符串]
@@ -136,5 +147,35 @@
 	Utilis.prototype.htmlEncode = function(text) {
 		return text.replace(/&/g ,'&').replace(/\"/g, '"').replace(/\</g, '<').replace(/\>/g, '>');
 	}
-	return window.Utilis;
+	/**
+	 * [isDigit 判断一个值是否为数字]
+	 * @param  {[String]}  value [需要判断的字符串]
+	 * @return {Boolean}       [是返回true,否返回false]
+	 */
+	Utilis.prototype.isDigit = function(value) {
+		var patrn = /^[0-9]*$/;
+		if (value == "" || patrn.exec(value) == null) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+	/**
+	 * [setCookie 将cookie的名称name, 值value,过期时间Hour,存储到document.cookie中]
+	 * @param {[String]} name  [cookie name]
+	 * @param {[String]} value [cookie name 对应的值]
+	 * @param {[Number]} Hours [过期时间]
+	 */
+	Utilis.prototype.setCookie = function (name, value, Hours) {
+	    var d = new Date();
+	    var offset = 8;
+	    var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+	    var nd = utc + (3600000 * offset);
+	    var exp = new Date(nd);
+	    exp.setTime(exp.getTime() + Hours * 60 * 60 * 1000);
+	    document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+	}
+	return O = {
+		Utilis: Utilis
+	};
 })();
