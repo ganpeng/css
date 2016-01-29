@@ -1,0 +1,14 @@
+jquery radio操作
+
+// 检查radio是否有被选中
+var $item = $(“:radio[id='idname']:checked”);
+var len=$item.length;
+if(len==0) alert(“没有选中”);
+// raido选中值
+$(“:radio[id='idname']:checked”).val();
+// 设定radio选项取消选中
+$(“:radio[id='idname']:checked”).attr(“checked”,false);
+//value=34的radio被选中
+$(“input[name=test][value=34]“).attr(“checked”,true);
+//value=34的radio被选中
+$(“input[id=testid][value=34]“).attr(“checked”,true);
